@@ -2,25 +2,31 @@
 import React,{useState} from "react";
 import './../styles/App.css';
 
-const Comp = (props) => {
-  const [text, setText] = useState('');
+const Child = ({inputValue, handleInputChange}) => {
 
-  return (
-    <div className="parent">
-      <h1>{props.parent}</h1>
-      <h4>{text}</h4>
-      <div className="child">
-        <h2>{props.child}</h2>
-        <input type="text" value={text} onChange={(e)=>setText(e.target.value)} />
-      </div>
+  return(
+    <div className="child">
+      <h2>Child Component</h2>
+      <input value={inputValue} onChange={handleInputChange} />
     </div>
   )
+  
 }
 
 const App = () => {
+  const [inputValue, setInputValue] = useState('');
+
+  function handleInput(e){
+    setInputValue(e.target.value);
+  }
+
   return (
     <div id="main">
-        <Comp parent="Parent Component" child="Child Component" />
+        <div className="parent">
+            <h1>Parent Component</h1>
+            <p>{inputValue}</p>
+            <Child inputValue={inputValue} handleInputChange={handleInput} />
+        </div>
     </div>
   )
 }
