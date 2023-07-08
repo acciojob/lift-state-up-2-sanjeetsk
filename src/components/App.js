@@ -7,7 +7,7 @@ const Child = ({inputValue, handleInputChange}) => {
   return(
     <div className="child">
       <h2>Child Component</h2>
-      <input value={inputValue} onChange={handleInputChange} />
+      <input type="text" value={inputValue} onChange={handleInputChange} />
     </div>
   )
   
